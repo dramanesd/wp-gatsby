@@ -25,7 +25,7 @@ const IndexPage = ({ pageContext }) => {
  
       {group.map(({ node }) => (
         <div key={node.slug} className={"post"} style={{marginBottom: 50}}>
-          {node.featured_media.localFile.childImageSharp.resolutions && 
+          {node.featured_media && node.featured_media.localFile.childImageSharp.resolutions && 
             <div>
               <Img resolutions={node.featured_media.localFile.childImageSharp.resolutions} />
             </div>
