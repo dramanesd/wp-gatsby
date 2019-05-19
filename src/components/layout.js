@@ -10,15 +10,29 @@ import PropTypes from "prop-types"
 import { StaticQuery, graphql } from "gatsby"
 
 import Header from "./header"
+import MainMenu from "./Menu/MainMenu"
 import "./layout.css"
 
-const Layout = ({ children }) => (
+const Layout = ({ children, data}) => (
   <StaticQuery
     query={graphql`
-      query SiteTitleQuery {
+      query LayoutQuery {
         site {
           siteMetadata {
             title
+          }
+        }
+        allWordpressWpApiMenusMenusItems {
+          edges {
+            node {
+              id
+              name
+              items {
+                title
+                url
+                object_slug
+              }
+            }
           }
         }
       }
@@ -34,6 +48,7 @@ const Layout = ({ children }) => (
             paddingTop: 0,
           }}
         >
+          <MainMenu menu={data} />
           <main>{children}</main>
           <footer>
             © {new Date().getFullYear()}, Built with
@@ -51,3 +66,6 @@ Layout.propTypes = {
 }
 
 export default Layout
+
+
+
