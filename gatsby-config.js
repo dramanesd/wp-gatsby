@@ -1,4 +1,5 @@
 module.exports = {
+  pathPrefix: `/wp-gatsby`,
   siteMetadata: {
     title: `Gatsby - Wordpress`,
     description: `A wordpress site with gatsby in the front`,
